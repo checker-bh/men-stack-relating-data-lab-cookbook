@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New recipe</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+
+        p {
+            font-size: 1.5em;
+            color: #4a90e2;
+            text-align: center;
+        }
+
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        input[type="text"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #4a90e2;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #357ab7;
+        }
+
+        a {
+        display: block;
+        text-align: center;
+        color: #4a90e2;
+        text-decoration: none;
+        margin-top: 20px;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+    </style>
+</head>
+<body>
+    <p>Add New Recipe</p>
+
+    <form action="/recipes" method="post">
+        <label for="name">Recipe Name:</label><br>
+        <input type="text" id="name" name="name" required><br><br>
+        
+        <label for="instructions">Instructions:</label><br>
+        <textarea id="instructions" name="instructions"></textarea><br><br>
+
+        <h3>Ingredients</h3>
+        <% ingredients.forEach(ingredient => { %>
+          <label>
+            <input type="checkbox" name="ingredients" value="<%= ingredient._id %>">
+            <%= ingredient.name %>
+          </label><br>
+        <% }); %>
+
+        <input type="submit" value="Submit">
+    </form>
+    <a href="/recipes/index">Back to Recipes</a>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Recipes</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f9;
+        color: #333;
+        margin: 0;
+        padding: 20px;
+      }
+
+      h1 {
+        color: #4a90e2;
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      li {
+        border: 1px solid #ccc;
+        padding: 15px;
+        margin-bottom: 10px;
+        background-color: #fff;
+        border-radius: 5px;
+        transition: transform 0.2s, box-shadow 0.2s;
+      }
+
+      li:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      li h2 {
+        margin: 0;
+        color: #333;
+      }
+
+      li p {
+        margin: 10px 0 0;
+        color: #666;
+      }
+
+      a {
+        text-decoration: none;
+        color: inherit;
+        display: block;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+
+      p {
+        text-align: center;
+        color: #666;
+      }
+
+      .create-recipe-link {
+        display: block;
+        text-align: center;
+        margin-top: 20px;
+        padding: 10px;
+        background-color: #4a90e2;
+        color: #fff;
+        border-radius: 5px;
+        transition: background-color 0.3s;
+      }
+
+      .create-recipe-link:hover {
+        background-color: #357ab7;
+      }
+    </style>
+</head>
+<body>
+    <%- include('../partials/_navbar.ejs') %>
+    <h1>My Recipes</h1>
+
+    <% if (recipes.length > 0) { %>
+        <ul>
+            <% recipes.forEach(recipe => { %>
+              <a href="/recipes/<%= recipe._id%>/show">
+                <li>
+                    <h2><%= recipe.name %></h2>
+                    <p><%= recipe.instructions %></p>
+                </li>
+              </a>
+            <% }) %>
+        </ul>
+    <% } else { %>
+        <p>You have not created any recipes yet.</p>
+    <% } %>
+
+    <a class="create-recipe-link" href="/recipes/new">Create a new recipe</a>
+</body>
+</html>

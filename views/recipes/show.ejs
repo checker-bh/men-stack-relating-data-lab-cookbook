@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #4a90e2;
+            text-align: center;
+        }
+
+        p {
+            font-size: 1.2em;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        ul li {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 10px;
+            margin: 5px 0;
+        }
+
+        .editButn, .delButn {
+            margin-top: 20px;
+        }
+
+        .editButn a, .delButn button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #4a90e2;
+            color: white;
+            text-decoration: none;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+
+        .editButn a:hover, .delButn button:hover {
+            background-color: #357ab7;
+        }
+
+        a {
+            color: #4a90e2;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+        .xo {
+            display: flex;
+            gap: 5px;
+        }
+        .nono{
+            margin: 15px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1><%= recipe.name %></h1>
+
+    <p><strong>Instructions:</strong></p>
+    <p><%= recipe.instructions %></p>
+
+    <p><strong>Ingredients:</strong></p>
+    <ul>
+        <% recipe.ingredients.forEach(ingredient => { %>
+            <li><%= ingredient.name %></li> 
+        <% }) %>
+    </ul>
+
+    <p><strong>Owner:</strong> <%= recipe.owner.username %></p> 
+    <br>
+    <div class="xo">
+    <div class="editButn ">
+        <a href="/recipes/<%= recipe._id %>/edit">Edit recipe</a>
+    </div>
+    <div class="delButn ">
+        <form action="/recipes/<%= recipe._id %>/show?_method=DELETE" method="POST">
+            <button type="submit">Delete Recipe</button>
+        </form>
+    </div>
+    
+</div>
+<div class="nono">
+    <a href="/recipes/index">Back to Recipes</a>
+</div>
+</body>
+</html>

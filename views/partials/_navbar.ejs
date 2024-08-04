@@ -1,0 +1,41 @@
+<nav class="navbar">
+
+    <% if (user) { %>
+       <a href="/">Home</a>
+        <a href="../recipes/index">View  Recipes</a>
+        <a href="../ingredients/index">View Ingredients</a>
+        <a href="/">sign Out</a>
+        <% } else {  %>
+            <a href="/">Home</a>
+            <a href="../auth/sign-in">Sign in</a>
+            <a href="../auth/sign-up">Sign up</a>
+            
+            
+            <% } %>
+</nav>
+
+<style>
+
+button:hover {
+  background-color: #357ab7;
+}
+
+.navbar {
+  /* background-color: #333; */
+  color: #333 ;
+  padding: 10px !important;
+  width: 50% !important;
+  text-align: center !important;
+}
+
+.navbar a {
+  color: #333 !important;
+  margin: 0 10px !important;
+  text-decoration: none !important;
+}
+
+.navbar a:hover {
+  text-decoration: underline;
+}
+
+</style>
